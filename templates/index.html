@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>IoT Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>IoT Dashboard</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Moto ID</th>
+                <th>Zona</th>
+                <th>Vaga</th>
+                <th>Status</th>
+                <th>Correct</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody id="logs-body"></tbody>
+    </table>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
