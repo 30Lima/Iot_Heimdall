@@ -1,0 +1,18 @@
+[
+    {
+        "moto_id": "M47",
+        "zona": "ZC2",
+        "vaga": 16,
+        "status": "entrada",
+        "correct": true,
+        "timestamp": 148685
+    },
+    {
+        "moto_id": "M48",
+        "zona": "ZE",
+        "vaga": 14,
+        "status": "entrada",
+        "correct": false,
+        "timestamp": 151739
+    }
+]
