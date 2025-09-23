@@ -1,13 +1,18 @@
 import json
 import threading
 import paho.mqtt.client as mqtt
+import os
 
-logs = []  # lista compartilhada com Flask
+# Lista compartilhada com Flask
+logs = []
+
+# Caminho absoluto do arquivo
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.path.join(BASE_DIR, "data.json")
 
 MQTT_BROKER = "broker.hivemq.com"
 MQTT_PORT = 1883
 MQTT_TOPIC = "esp32/dados"
-DATA_FILE = "data.json"
 
 def load_data():
     global logs
@@ -33,7 +38,6 @@ def on_message(client, userdata, msg):
     try:
         payload = msg.payload.decode()
         data = json.loads(payload)
-
         print("📥 Received:", data)
 
         logs.append(data)
@@ -46,10 +50,9 @@ def start_mqtt():
     client = mqtt.Client()
     client.on_connect = on_connect
     client.on_message = on_message
-
     client.connect(MQTT_BROKER, MQTT_PORT, 60)
 
-    # roda o loop MQTT em thread separada
+    # Loop do MQTT em thread separada
     thread = threading.Thread(target=client.loop_forever)
     thread.daemon = True
     thread.start()
