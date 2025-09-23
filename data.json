@@ -24,387 +24,59 @@
         "timestamp": 8102
     },
     {
-        "moto_id": "M2",
-        "zona": "ZC1",
-        "vaga": 16,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 11132
-    },
-    {
-        "moto_id": "M3",
-        "zona": "ZE",
-        "vaga": 12,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 14161
-    },
-    {
-        "moto_id": "M4",
-        "zona": "ZE",
-        "vaga": 14,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 17190
-    },
-    {
-        "moto_id": "M5",
-        "zona": "ZC1",
-        "vaga": 1,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 20219
-    },
-    {
-        "moto_id": "M6",
-        "zona": "ZC2",
-        "vaga": 4,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 23250
-    },
-    {
-        "moto_id": "M7",
-        "zona": "ZC1",
-        "vaga": 17,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 26279
-    },
-    {
-        "moto_id": "M8",
-        "zona": "ZC1",
-        "vaga": 15,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 29308
-    },
-    {
-        "moto_id": "M9",
-        "zona": "ZC2",
-        "vaga": 7,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 32337
-    },
-    {
-        "moto_id": "M10",
-        "zona": "ZE",
-        "vaga": 5,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 35366
-    },
-    {
-        "moto_id": "M11",
-        "zona": "ZC2",
-        "vaga": 7,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 38395
-    },
-    {
-        "moto_id": "M12",
-        "zona": "ZC2",
-        "vaga": 6,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 41425
-    },
-    {
-        "moto_id": "M13",
-        "zona": "ZC1",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 44454
-    },
-    {
-        "moto_id": "M14",
-        "zona": "ZE",
-        "vaga": 12,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 47483
-    },
-    {
-        "moto_id": "M15",
-        "zona": "ZC2",
-        "vaga": 11,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 50512
-    },
-    {
-        "moto_id": "M16",
-        "zona": "ZE",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 53541
-    },
-    {
         "moto_id": "M17",
-        "zona": "ZE",
-        "vaga": 19,
+        "zona": "ZC1",
+        "vaga": 10,
         "status": "entrada",
-        "correct": false,
-        "timestamp": 56571
+        "correct": true,
+        "timestamp": 63179
     },
     {
         "moto_id": "M18",
         "zona": "ZC2",
-        "vaga": 13,
+        "vaga": 18,
         "status": "entrada",
-        "correct": false,
-        "timestamp": 59600
+        "correct": true,
+        "timestamp": 66248
     },
     {
         "moto_id": "M19",
-        "zona": "ZE",
-        "vaga": 16,
+        "zona": "ZC1",
+        "vaga": 3,
         "status": "entrada",
-        "correct": true,
-        "timestamp": 62629
+        "correct": false,
+        "timestamp": 69269
     },
     {
         "moto_id": "M20",
         "zona": "ZC1",
-        "vaga": 10,
+        "vaga": 11,
         "status": "entrada",
         "correct": true,
-        "timestamp": 65658
+        "timestamp": 72364
     },
     {
         "moto_id": "M21",
-        "zona": "ZC1",
-        "vaga": 13,
+        "zona": "ZE",
+        "vaga": 16,
         "status": "entrada",
         "correct": true,
-        "timestamp": 68687
+        "timestamp": 75779
     },
     {
         "moto_id": "M22",
         "zona": "ZC1",
-        "vaga": 13,
+        "vaga": 5,
         "status": "entrada",
-        "correct": true,
-        "timestamp": 71718
+        "correct": false,
+        "timestamp": 79062
     },
     {
         "moto_id": "M23",
-        "zona": "ZC2",
-        "vaga": 6,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 74747
-    },
-    {
-        "moto_id": "M24",
-        "zona": "ZE",
-        "vaga": 15,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 77776
-    },
-    {
-        "moto_id": "M25",
         "zona": "ZC1",
-        "vaga": 15,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 80805
-    },
-    {
-        "moto_id": "M26",
-        "zona": "ZC1",
-        "vaga": 11,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 83834
-    },
-    {
-        "moto_id": "M27",
-        "zona": "ZC1",
-        "vaga": 12,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 86865
-    },
-    {
-        "moto_id": "M28",
-        "zona": "ZC1",
-        "vaga": 11,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 89894
-    },
-    {
-        "moto_id": "M29",
-        "zona": "ZC1",
-        "vaga": 16,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 92923
-    },
-    {
-        "moto_id": "M30",
-        "zona": "ZE",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 95952
-    },
-    {
-        "moto_id": "M31",
-        "zona": "ZE",
         "vaga": 10,
         "status": "entrada",
         "correct": true,
-        "timestamp": 98981
-    },
-    {
-        "moto_id": "M32",
-        "zona": "ZC2",
-        "vaga": 16,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 102012
-    },
-    {
-        "moto_id": "M33",
-        "zona": "ZC1",
-        "vaga": 13,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 105041
-    },
-    {
-        "moto_id": "M34",
-        "zona": "ZC1",
-        "vaga": 16,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 108070
-    },
-    {
-        "moto_id": "M35",
-        "zona": "ZE",
-        "vaga": 16,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 111099
-    },
-    {
-        "moto_id": "M36",
-        "zona": "ZC1",
-        "vaga": 4,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 114128
-    },
-    {
-        "moto_id": "M37",
-        "zona": "ZC2",
-        "vaga": 2,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 117159
-    },
-    {
-        "moto_id": "M38",
-        "zona": "ZC2",
-        "vaga": 12,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 120188
-    },
-    {
-        "moto_id": "M39",
-        "zona": "ZE",
-        "vaga": 20,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 123217
-    },
-    {
-        "moto_id": "M40",
-        "zona": "ZC2",
-        "vaga": 14,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 126246
-    },
-    {
-        "moto_id": "M41",
-        "zona": "ZC1",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 129275
-    },
-    {
-        "moto_id": "M42",
-        "zona": "ZC1",
-        "vaga": 18,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 132306
-    },
-    {
-        "moto_id": "M43",
-        "zona": "ZE",
-        "vaga": 3,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 135335
-    },
-    {
-        "moto_id": "M44",
-        "zona": "ZE",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 138364
-    },
-    {
-        "moto_id": "M45",
-        "zona": "ZC1",
-        "vaga": 18,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 141393
-    },
-    {
-        "moto_id": "M46",
-        "zona": "ZC1",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 144422
-    },
-    {
-        "moto_id": "M47",
-        "zona": "ZC1",
-        "vaga": 1,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 147451
-    },
-    {
-        "moto_id": "M48",
-        "zona": "ZE",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": false,
-        "timestamp": 150482
-    },
-    {
-        "moto_id": "M49",
-        "zona": "ZC2",
-        "vaga": 9,
-        "status": "entrada",
-        "correct": true,
-        "timestamp": 153511
+        "timestamp": 82152
     }
 ]
