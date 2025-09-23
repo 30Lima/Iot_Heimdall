@@ -1,0 +1,137 @@
+/* styles.css */
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f6f8;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+    font-size: 1.8rem;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: #0056b3;
+}
+
+/* Cards */
+#cards {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    flex: 1 1 200px;
+    margin: 10px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.card p {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Logs */
+#logs table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#logs th, #logs td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+#logs th {
+    background-color: #007bff;
+    color: white;
+}
+
+#logs tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#logs tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Gráficos */
+#charts {
+    margin-bottom: 30px;
+}
+
+.chart-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+canvas {
+    width: 40% !important;
+    height: 150px !important;
+}
+
+/* Garantir que os gráficos tenham altura suficiente */
+#charts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+#charts canvas {
+    flex: 1 1 280px; /* ocupa ao menos 400px de largura */
+    min-height: 550px; /* altura mínima */
+    background-color: #fff; /* opcional, deixa o gráfico mais visível */
+    border-radius: 8px; 
+    padding: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
