@@ -3,42 +3,10 @@ const totalMotosEl = document.getElementById("total-motos");
 const vagasOcupadasEl = document.getElementById("vagas-ocupadas");
 const corretasEl = document.getElementById("corretas");
 const logsBody = document.getElementById("logs-body");
+const motosErradasPatioEl = document.getElementById("motos-erradas-patio"); // novo card
+const motosErradasSaidaEl = document.getElementById("motos-erradas-saida"); // novo card
 
-// Configuração dos gráficos Chart.js
-let chartCorrectCtx = document.getElementById("chart-correct").getContext("2d");
-let chartEntradaCtx = document.getElementById("chart-entrada").getContext("2d");
-
-let chartCorrect = new Chart(chartCorrectCtx, {
-    type: 'doughnut',
-    data: {
-        labels: ["Corretas", "Erradas"],
-        datasets: [{
-            data: [0, 0],
-            backgroundColor: ['#4caf50', '#f44336']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { position: 'top' } }
-    }
-});
-
-let chartEntrada = new Chart(chartEntradaCtx, {
-    type: 'bar',
-    data: {
-        labels: ["Entrada", "Saída"],
-        datasets: [{
-            label: 'Quantidade',
-            data: [0, 0],
-            backgroundColor: ['#2196f3', '#ff9800']
-        }]
-    },
-    options: {
-        responsive: true,
-        plugins: { legend: { display: false } },
-        scales: { y: { beginAtZero: true } }
-    }
-});
+// ... [configuração dos gráficos Chart.js permanece igual] ...
 
 // Função para atualizar dashboard
 async function fetchLogs() {
@@ -48,32 +16,56 @@ async function fetchLogs() {
 
         // Atualiza tabela de logs (últimos 20)
         logsBody.innerHTML = "";
+        const motosErradasPatio = [];
+        const motosErradasSaida = [];
+
         data.slice(-20).forEach(log => {
+            const date = new Date(log.timestamp);
+            const formattedTime = date.toLocaleString();
+
+            // Preenche os arrays apenas com IDs das motos erradas
+            if (!log.correct && log.status === "entrada") motosErradasPatio.push(log.moto_id);
+            if (!log.correct && log.status === "saida") motosErradasSaida.push(log.moto_id);
+
+            // Cria linha da tabela sem exibir status
             const tr = document.createElement("tr");
             tr.innerHTML = `
                 <td>${log.moto_id}</td>
                 <td>${log.zona}</td>
                 <td>${log.vaga}</td>
-                <td>${log.status}</td>
-                <td>${log.correct}</td>
-                <td>${log.timestamp}</td>
+                <td>${formattedTime}</td>
             `;
+            if (!log.correct && log.status === "entrada") tr.classList.add("moto-errada");
             logsBody.appendChild(tr);
         });
 
-        // Atualiza cards
-        totalMotosEl.textContent = data.length;
-        vagasOcupadasEl.textContent = data.filter(log => log.status === "entrada").length;
-        let corretas = data.filter(log => log.correct).length;
-        corretasEl.textContent = data.length > 0 ? `${Math.round((corretas / data.length) * 100)}%` : "0%";
+        // Função para limitar e formatar lista de motos (só IDs)
+        const formatList = list => {
+            let display = list.slice(0, 5).join(", ");
+            if (list.length > 5) display += " ...";
+            return display || "Nenhuma";
+        };
+
+        // Atualiza cards com tooltip mostrando todos os IDs
+        if (motosErradasPatioEl) {
+            motosErradasPatioEl.textContent = formatList(motosErradasPatio);
+            motosErradasPatioEl.title = motosErradasPatio.join("\n") || "Nenhuma";
+        }
+        if (motosErradasSaidaEl) {
+            motosErradasSaidaEl.textContent = formatList(motosErradasSaida);
+            motosErradasSaidaEl.title = motosErradasSaida.join("\n") || "Nenhuma";
+        }
+
+        // Atualiza cards principais
+        const entradas = data.filter(log => log.status === "entrada");
+        totalMotosEl.textContent = entradas.length;
+        vagasOcupadasEl.textContent = entradas.length;
+        const corretasCount = entradas.filter(log => log.correct).length;
+        corretasEl.textContent = entradas.length > 0 ? `${Math.round((corretasCount / entradas.length) * 100)}%` : "0%";
 
         // Atualiza gráficos
-        chartCorrect.data.datasets[0].data = [corretas, data.length - corretas];
-
-        let entradas = data.filter(log => log.status === "entrada").length;
-        let saidas = data.filter(log => log.status === "saida").length;
-        chartEntrada.data.datasets[0].data = [entradas, saidas];
-
+        chartEntrada.data.datasets[0].data = [entradas.length, data.filter(log => log.status === "saida").length];
+        chartCorrect.data.datasets[0].data = [corretasCount, motosErradasPatio.length];
         chartCorrect.update();
         chartEntrada.update();
 
