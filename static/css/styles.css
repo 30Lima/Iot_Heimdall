@@ -18,11 +18,15 @@ header {
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
+    background-color: #216211ff;
+    width: 100%;
+    padding: 10px;
 }
 
 header h1 {
     margin-bottom: 10px;
-    font-size: 1.8rem;
+    font-size: 2.2rem;
+    color: white;
 }
 
 nav a {
@@ -80,7 +84,6 @@ nav a:hover {
     cursor: pointer;
 }
 
-/* Tooltip mostrando todas as motos erradas */
 #motos-erradas[title] {
     position: relative;
 }
@@ -104,24 +107,41 @@ nav a:hover {
     box-shadow: 0 2px 6px rgba(0,0,0,0.2);
 }
 
-/* Logs */
+/* Logs --- SEÇÃO ATUALIZADA --- */
+#logs h2 {
+    text-align: center; /* Opcional: centraliza o título "Logs em Tempo Real" */
+    margin-bottom: 15px;
+}
+
 #logs table {
-    width: 100%;
+    /* 1. Definindo um tamanho máximo e centralizando */
+    max-width: 1000px;      /* A tabela terá no máximo 900px de largura */
+    width: 100%;           /* Em telas menores que 900px, ela será responsiva */
+    margin: 0 auto 30px;   /* A mágica para centralizar: margem automática nas laterais */
+
     border-collapse: collapse;
-    margin-bottom: 30px;
     background-color: #fff;
     border-radius: 10px;
     overflow: hidden;
+    table-layout: fixed; 
 }
 
 #logs th, #logs td {
-    padding: 12px 10px; /* padding horizontal menor */
-    text-align: center; /* todas as colunas centralizadas */
+    padding: 12px 15px;
+    /* 2. Centralizando o texto de todas as células */
+    text-align: center; 
     border-bottom: 1px solid #ddd;
 }
 
+/* Definindo a largura de cada coluna */
+#logs th:nth-child(1), #logs td:nth-child(1) { width: 15%; } /* Moto ID */
+#logs th:nth-child(2), #logs td:nth-child(2) { width: 15%; } /* Zona */
+#logs th:nth-child(3), #logs td:nth-child(3) { width: 10%; } /* Vaga */
+#logs th:nth-child(4), #logs td:nth-child(4) { width: 30%; } /* Timestamp */
+
+
 #logs th {
-    background-color: #007bff;
+    background-color: #2ab275ff;
     color: white;
 }
 
@@ -133,16 +153,9 @@ nav a:hover {
     background-color: #f1f1f1;
 }
 
-/* Reduz padding apenas da coluna Timestamp */
-#logs td.timestamp,
-#logs th.timestamp {
-    padding-left: 5px;
-    padding-right: 5px;
-}
-
 /* Destaque para motos erradas na tabela */
 .moto-errada {
-    background-color: #ffcccc;
+    background-color: #ffcccc !important; 
     font-weight: bold;
 }
 
