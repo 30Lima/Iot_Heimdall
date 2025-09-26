@@ -1,0 +1,10 @@
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+PubSubClient
+WiFi
+DHT sensor library
+TinyGPSPlus
+
+
+link do projeto: https://wokwi.com/projects/442299333716121601
