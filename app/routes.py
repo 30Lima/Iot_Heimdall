@@ -5,8 +5,8 @@ import json
 bp = Blueprint("main", __name__)
 
 # Caminho absoluto para o data.json na pasta data
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_FILE = os.path.join(BASE_DIR, "data", "data.json")
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))  # sobe uma pasta
+DATA_FILE = os.path.join(BASE_DIR, "data/data.json")  # agora aponta para a pasta data/ na raiz
 
 @bp.route("/")
 def dashboard():
