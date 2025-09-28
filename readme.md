@@ -13,11 +13,6 @@
 
 O **HEIMDALL** é uma solução integrada composta por um aplicativo mobile (React Native) e um sistema de simulação com IoT e dashboard web (Python + Flask + MQTT). Seu objetivo é facilitar o processo de **localização e monitoramento de motocicletas dentro do pátio logístico da Mottu**, organizando as motos por zonas e exibindo logs de entrada em tempo real.
 
-
-## 📸 Ilustração do circuito
-![fluxo-geral](circuit/images/image.png)  
-*Exemplo de fluxo: ESP32 → API Flask → Armazenamento + Interface Web*
-
 ### Funcionalidades
 
 - **Aplicativo mobile** com navegação via Drawer, telas de Splash, Login, Cadastro, Home, Perfil e Sobre.
