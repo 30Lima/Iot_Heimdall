@@ -26,5 +26,30 @@ O **HEIMDALL** é uma solução integrada composta por um aplicativo mobile (Rea
 ## Estrutura do Projeto
 
 ```bash
-
+/
+├── app/                           # Código principal da aplicação Flask
+│   ├── __pycache__/               # Cache do Python (não versionar)
+│   ├── static/                    # Arquivos estáticos do sistema
+│   │   ├── css/                   # Arquivos de estilo
+│   │   │   └── styles.css         # Estilização da interface do dashboard
+│   │   ├── javascript/            # Scripts JavaScript
+│   │   │   ├── graph.js           # Lógica de exibição e atualização dos gráficos
+│   │   │   └── script.js          # Funções para exibir e atualizar logs em tempo real
+│   ├── templates/                 # Arquivos HTML
+│   │   └── index.html             # Estrutura da interface do dashboard
+│   ├── __init__.py                # Inicialização da aplicação Flask
+│   ├── mqtt_client.py             # Cliente MQTT para comunicação com o Wokwi/ESP32
+│   ├── routes.py                  # Definição das rotas da aplicação
+├── circuit/                       # Arquivos relacionados ao circuito ESP32
+│   ├── code/                      # Código-fonte do ESP32
+│   ├── images/                    # Imagens do circuito
+│   ├── diagram.json               # Diagrama do circuito (Wokwi)
+│   └── libraries.txt              # Bibliotecas necessárias para executar o circuito
+├── data/                          # Armazenamento de dados
+│   └── data.json                  # Logs recebidos do ESP32
+├── system_images/                 # Imagens usadas no sistema/dashboard
+├── app.py                         # Script principal para iniciar a aplicação Flask
+├── readme.md                      # Documentação e descrição do projeto
+├── requirements.txt               # Dependências do projeto
 ```
+
