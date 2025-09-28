@@ -7,8 +7,13 @@ import os
 logs = []
 
 # Caminho absoluto do arquivo
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(BASE_DIR, "data.json")
+# Caminho absoluto para a pasta raiz do projeto
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))  # sobe uma pasta
+DATA_DIR = os.path.join(PROJECT_ROOT, "data")
+DATA_FILE = os.path.join(DATA_DIR, "data.json")
+
+# Garante que a pasta data exista
+os.makedirs(DATA_DIR, exist_ok=True)
 
 MQTT_BROKER = "broker.hivemq.com"
 MQTT_PORT = 1883
