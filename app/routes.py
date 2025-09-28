@@ -1,12 +1,12 @@
+import os
 from flask import Blueprint, render_template, jsonify
 import json
-import os
 
 bp = Blueprint("main", __name__)
 
-# Caminho absoluto do arquivo
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_FILE = os.path.join(BASE_DIR, "data.json")
+# Caminho absoluto para o data.json na pasta data
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_FILE = os.path.join(BASE_DIR, "data", "data.json")
 
 @bp.route("/")
 def dashboard():
