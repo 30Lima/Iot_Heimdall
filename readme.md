@@ -108,4 +108,9 @@ python app.py
 ### 6. Acesse o localhost (foi exibido no seu terminal) e veja o sistema funcionando
 > Exemplo de localhost - http://127.0.0.1:5000
 
+### Link do PITCH - IoT
+```bash
+https://youtu.be/QDE-c8H2k18
+```
+
 © 2025 MontClio. Todos os direitos reservados.
