@@ -113,4 +113,5 @@ python app.py
 https://youtu.be/QDE-c8H2k18
 ```
 
+---
 © 2025 MontClio. Todos os direitos reservados.
