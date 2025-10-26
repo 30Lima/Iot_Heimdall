@@ -15,8 +15,6 @@
     </header>
 
     <main>
-        <!-- Seção 1 - Cards -->
-        <!-- Seção 1 - Cards -->
         <section id="cards">
             <div class="card">
                 <h3>Total de Motos Ativas</h3>
@@ -34,12 +32,13 @@
                 <h3>Motos Erradas no Pátio</h3>
                 <p id="motos-erradas-patio">Nenhuma</p>
             </div>
-
         </section>
 
-
-
-        <!-- Seção 2 - Logs -->
+        <section id="patio">
+            <h2>Visão Geral do Pátio</h2>
+            <div id="patio-grid">
+            </div>
+        </section>
         <section id="logs">
             <h2>Logs em Tempo Real</h2>
             <table>
@@ -53,12 +52,10 @@
 
                 </thead>
                 <tbody id="logs-body">
-                    <!-- Preenchido pelo script.js -->
                 </tbody>
             </table>
         </section>
 
-        <!-- Seção 3 - Gráficos -->
         <section id="charts">
             <h2>Gráficos</h2>
             <canvas id="chart-correct" width="400" height="250"></canvas>
@@ -67,7 +64,6 @@
     </main>
 
     <script src="{{ url_for('static', filename='javascript/script.js') }}"></script>
-    <script src="{{ url_for('static', filename='javascript/graph.js') }}"></script>
 </body>
 
 </html>
