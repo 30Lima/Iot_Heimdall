@@ -1,95 +1,86 @@
-# HEIMDALL - Localização e Monitoramento de Motos no Pátio
-> Solução para o challenge da Mottu promovido pela FIAP
+# HEIMDALL - Plataforma de Monitoramento de Pátio
+> Solução para o challenge da Mottu promovido pela FIAP (Sprint 4 - Disruptive Architectures)
 
 ## Integrantes
 
-| Nome Completo               | RM       |
-|-----------------------------|----------|
-| Pedro Henrique Lima Santos  | 558243   |
-| Vitor Gomes Martins         | 558244   |
-| Leonardo Pimentel Santos    | 557541   |
+| Nome Completo                 | RM      |
+|-----------------------------|---------|
+| Pedro Henrique Lima Santos  | 558243  |
+| Vitor Gomes Martins         | 558244  |
+| Leonardo Pimentel Santos    | 557541  |
 
-## Descrição da Solução
+## 1. Descrição da Solução
 
-O **HEIMDALL** é uma solução integrada composta por um aplicativo mobile (React Native) e um sistema de simulação com IoT e dashboard web (Python + Flask + MQTT). Seu objetivo é facilitar o processo de **localização e monitoramento de motocicletas dentro do pátio logístico da Mottu**, organizando as motos por zonas e exibindo logs de entrada em tempo real.
+O **HEIMDALL** é uma plataforma de monitoramento de pátio em tempo real, construída com uma arquitetura de microsserviços desacoplada. A solução utiliza **Python (Flask)** para o *backend* e **JavaScript** puro para o *frontend*, com um banco de dados **Oracle** como fonte única da verdade.
 
-### Funcionalidades
+O objetivo é fornecer à Mottu uma visão clara e instantânea do seu pátio logístico, permitindo o rastreamento de vagas e a identificação de anomalias.
 
-- **Aplicativo mobile** com navegação via Drawer, telas de Splash, Login, Cadastro, Home, Perfil e Sobre.
-- Armazenamento local do nome de usuário com `AsyncStorage`.
-- Interface desenvolvida com foco em acessibilidade, responsividade e boas práticas de UX.
-- **Dashboard web** que exibe em tempo real os logs das entradas das motos no pátio com nome da zona, placa e horário.
-- Integração MQTT para simular envio automático de dados de sensores IoT.
+## 2. Arquitetura da Solução
+
+O sistema funciona num fluxo de dados contínuo, de ponta a ponta:
+
+1.  **Captura (IoT):** Um simulador de ESP32 (Wokwi) publica eventos de telemetria (ID da moto, vaga, status) num tópico **MQTT** (`broker.hivemq.com`).
+2.  **Ingestão (Backend):** Um *script* (`mqtt_client.py`), a correr num *thread* separado, subscreve ao tópico MQTT, recebe os dados e faz o `INSERT` em tempo real no banco de dados **Oracle** (usando SQLAlchemy).
+3.  **Persistência (Banco):** O **Oracle DB** armazena todo o histórico de eventos.
+4.  **Consumo (API):** O **Flask** serve uma API REST com dois *endpoints*:
+    * `GET /logs`: Retorna o histórico dos últimos 100 eventos (para a tabela de logs e gráficos de tendência).
+    * `GET /api/patio/status`: Retorna o **estado atual** do pátio (apenas as vagas ocupadas), usando uma consulta SQL complexa (com `ROW_NUMBER()`) para calcular o último estado de cada vaga.
+5.  **Visualização (Frontend):** O *dashboard* (`index.html`) usa JavaScript para consumir os dois *endpoints* a cada 2 segundos, atualizando os KPIs, os gráficos, a tabela de logs e o grid do pátio em tempo real.
+
+## 3. Funcionalidades do Dashboard
+
+* **Visão Geral do Pátio (Grid):** Um mapa modular (feito com CSS Grid) que exibe todas as vagas do pátio e as "pinta" (de verde para amarelo) quando uma moto estaciona, mostrando o ID da moto na vaga.
+* **Indicadores (KPIs):** *Cards* que mostram o "Total de Motos Ativas", "Vagas Ocupadas" (com base no estado real) e a "% de Entradas Corretas".
+* **Alertas em Tempo Real:** Um *card* que lista os IDs das motos que entraram na zona errada.
+* **Log de Eventos:** Uma tabela com os últimos eventos registados pelo sistema.
+* **Gráficos de Tendência:** Gráficos de pizza e barras que analisam as entradas por zona e a proporção de entradas corretas vs. incorretas.
 
 ---
 
-## Estrutura do Projeto
+## 4. Estrutura do Projeto
 
 ```bash
 /
-├── app/                           # Código principal da aplicação Flask
-│   ├── static/                    # Arquivos estáticos do sistema
-│   │   ├── css/                   # Arquivos de estilo
-│   │   │   └── styles.css         # Estilização da interface do dashboard
-│   │   ├── javascript/            # Scripts JavaScript
-│   │   │   ├── graph.js           # Lógica de exibição e atualização dos gráficos
-│   │   │   └── script.js          # Funções para exibir e atualizar logs em tempo real
-│   ├── templates/                 # Arquivos HTML
-│   │   └── index.html             # Estrutura da interface do dashboard
-│   ├── __init__.py                # Inicialização da aplicação Flask
-│   ├── mqtt_client.py             # Cliente MQTT para comunicação com o Wokwi/ESP32
-│   ├── routes.py                  # Definição das rotas da aplicação
-├── circuit/                       # Arquivos relacionados ao circuito ESP32
-│   ├── code/                      # Código-fonte do ESP32
-│   ├── images/                    # Imagens do circuito
-│   ├── diagram.json               # Diagrama do circuito (Wokwi)
-│   └── libraries.txt              # Bibliotecas necessárias para executar o circuito
-├── data/                          # Armazenamento de dados
-│   └── data.json                  # Logs recebidos do ESP32
-├── system_images/                 # Imagens usadas no sistema/dashboard
-├── .gitignore                     # Define arquivos e pastas que não serão versionados pelo Git
-├── app.py                         # Script principal para iniciar a aplicação Flask
-├── readme.md                      # Documentação e descrição do projeto
-├── requirements.txt               # Dependências do projeto
+├── app/                      # Código principal da aplicação Flask
+│   ├── static/               # Arquivos estáticos (CSS, JS)
+│   │   ├── css/
+│   │   │   └── styles.css    # Estilização do grid do pátio e dashboard
+│   │   └── javascript/
+│   │       └── script.js     # CÉREBRO DO FRONTEND: Unificado (JS + Gráficos),
+│   │                         # consome as APIs e atualiza o HTML
+│   ├── templates/
+│   │   └── index.html        # Estrutura do dashboard e do grid do pátio
+│   ├── __init__.py           # Inicialização da aplicação Flask (Factory)
+│   ├── database.py           # Configuração do SQLAlchemy e modelo 'Telemetria'
+│   ├── mqtt_client.py        # Cliente MQTT (O "Escritor" - Salva no Oracle)
+│   └── routes.py             # Definição das APIs REST (O "Leitor" - Lê do Oracle)
+├── circuit/                  # Arquivos do simulador Wokwi (ESP32)
+├── .gitignore                # Ignora .env, venv/, __pycache__, etc.
+├── .vscode/                  # Configurações do VSCode (opcional)
+├── app.py                    # Script principal para iniciar a aplicação
+├── init_db.py                # Script utilitário (para criar as tabelas no Oracle 1x)
+├── readme.md                 # Esta documentação
+└── requirements.txt          # Dependências do Python (Flask, SQLAlchemy, oracledb, ...)
 ```
 
-### 🌐 Configuração do Broker MQTT
-
-Broker:        HiveMQ (broker público)
-Endereço:      broker.hivemq.com
-Porta:         1883
-Tópico:        esp32/dados
-Protocolo:     MQTT v3.1.1
-
----
-
-### 🗂 Arquivo gerado
-
-Caminho:    data/data.json  
-Formato:    JSON  
-Conteúdo:   Array de objetos contendo os dados do ESP32 com timestamps  
-
-> 💡 Este fluxo permite armazenar com segurança e em tempo real os dados recebidos do ESP32, garantindo que possam ser utilizados posteriormente pela API Flask e exibidos na interface web.
-
----
-
-## 🚀 Como Executar o Projeto
+## Como Executar o Projeto
 
 ### Pré-requisitos
 
+- Python 3.10+
 - [Node.js](https://nodejs.org/) 
 - [Git](https://git-scm.com/)
 - Editor de código (como o [VS Code](https://code.visualstudio.com/))
-
+  
 ### 1. Clone o repositório
 ```bash
 git clone https://github.com/30Lima/Iot_Heimdall.git
 cd Iot_Heimdall
 ```
 
-### 2. Instale as dependências
+### 2. Entre no ambiente virtual (venv)
 ```bash
-pip install -r requirements.txt
+.\venv\Scripts\activate
 ```
 
 ### 3. Acesse o sistema do ESP32 na plataforma wowki
