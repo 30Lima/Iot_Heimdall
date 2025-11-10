@@ -110,7 +110,7 @@ python app.py
 
 ### Link do PITCH - IoT
 ```bash
-https://youtu.be/QDE-c8H2k18
+https://youtu.be/9q4ZJ23FAfc
 ```
 
 ### Opcional - Caso queira rodar o banco na sua máquina, insira as credenciais em um .env e inicialize o script do banco
