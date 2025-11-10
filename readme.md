@@ -77,31 +77,45 @@ O sistema funciona num fluxo de dados contínuo, de ponta a ponta:
 git clone https://github.com/30Lima/Iot_Heimdall.git
 cd Iot_Heimdall
 ```
+### 2. Crie o ambiente virtual (venv)
+```bash
+python -m venv venv
+```
 
 ### 2. Entre no ambiente virtual (venv)
 ```bash
 .\venv\Scripts\activate
 ```
 
-### 3. Acesse o sistema do ESP32 na plataforma wowki
+### 3. Baixe as dependências
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Acesse o sistema do ESP32 na plataforma wowki
 ```bash
 https://wokwi.com/projects/442299333716121601
 ```
 
-### 4. Execute o sistema do ESP32
+### 5. Execute o sistema do ESP32
 <img width="1862" height="870" alt="image" src="https://github.com/user-attachments/assets/2acbe029-c058-4cea-b8b8-d7568cc816ed" />
 
-### 5. No terminal do vscode (ou a sua IDE), execute
+### 6. No terminal do vscode (ou a sua IDE), execute
 ```bash
 python app.py
 ```
 
-### 6. Acesse o localhost (foi exibido no seu terminal) e veja o sistema funcionando
+### 7. Acesse o localhost (foi exibido no seu terminal) e veja o sistema funcionando
 > Exemplo de localhost - http://127.0.0.1:5000
 
 ### Link do PITCH - IoT
 ```bash
 https://youtu.be/QDE-c8H2k18
+```
+
+### Opcional - Caso queira rodar o banco na sua máquina, insira as credenciais em um .env e inicialize o script do banco
+```bash
+python init_db.py
 ```
 
 ---
